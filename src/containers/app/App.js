@@ -1,16 +1,11 @@
+// @flow
 import React from 'react'
-import logo from '../../logo.svg'
 import './App.css'
+import FaceEdit from '../face/FaceEdit'
 
 const App = () => (
   <div className="App">
-    <div className="header">
-      <img src={logo} className="logo" alt="logo" />
-      <h2>Welcome to React</h2>
-    </div>
-    <p className="intro">
-      To get started, edit <code>src/App.js</code> and save to reload.
-    </p>
+    <FaceEdit />
   </div>)
 
 export default App

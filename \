@@ -36,7 +36,7 @@ export const selectMouth = (mouth: string): Action => ({
   mouth,
 })
 
-export const initFace = (): Action => ({
+export const faceRefresh = (): Action => ({
   type: 'INIT_FACE',
 })
 

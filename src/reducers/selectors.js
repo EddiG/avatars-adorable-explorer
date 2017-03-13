@@ -1,2 +1,7 @@
-// export const getSomething = (state, val1, val2, valN) =>
-//   state.entities.filter(el => el.val1 === val1 && el.val2 !== val2)
+// @flow
+
+import get from 'lodash/get'
+
+export const getFirstEyes = (state: Object) => get(state, 'eyes[0]', '')
+export const getFirstNose = (state: Object) => get(state, 'noses[0]', '')
+export const getFirstMouth = (state: Object) => get(state, 'mouths[0]', '')
