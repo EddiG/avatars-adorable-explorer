@@ -1,9 +1,15 @@
 // @flow
-import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
-import { Image, Selector } from '../../components'
-import { initFace, selectEyes, selectNose, selectMouth } from '../../actions'
-import './FaceEdit.css'
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { Image, Selector, ColorPicker } from '../../components';
+import {
+  initFace,
+  selectEyes,
+  selectNose,
+  selectMouth,
+  selectColor,
+} from '../../actions';
+import './FaceEdit.css';
 
 type Props = {
   eyes: Array<string>,
@@ -12,38 +18,58 @@ type Props = {
   face: {
     eyes: string,
     nose: string,
-    mouth: string },
-  initFace: Function,
-  selectEyes: Function,
-  selectNose: Function,
-  selectMouth: Function,
-}
+    mouth: string,
+    color: string,
+  },
+  initFace: () => void,
+  selectEyes: (eyes: string) => void,
+  selectNose: (nose: string) => void,
+  selectMouth: (mouth: string) => void,
+  selectColor: (color: string) => void,
+};
 
 class FaceEdit extends PureComponent {
   componentWillMount() {
-    this.props.initFace()
+    this.props.initFace();
   }
 
-  props: Props
+  props: Props;
 
   render() {
-    const eyes = this.props.eyes
-    const noses = this.props.noses
-    const mouths = this.props.mouths
-    const face = this.props.face
-    const avatar = `https://api.adorable.io/avatars/face/${face.eyes}/${face.nose}/${face.mouth}/00ffff`
+    const eyes = this.props.eyes;
+    const noses = this.props.noses;
+    const mouths = this.props.mouths;
+    const face = this.props.face;
+    const avatar = `https://api.adorable.io/avatars/face/${face.eyes}/${face.nose}/${face.mouth}/${face.color}`;
 
     return (
       <div className="FaceEdit">
         <div>
-          <Selector label="Eyes" values={eyes} onSelectChanged={this.props.selectEyes} />
-          <Selector label="Noses" values={noses} onSelectChanged={this.props.selectNose} />
-          <Selector label="Mouths" values={mouths} onSelectChanged={this.props.selectMouth} />
-          <a href={avatar} target="_blank">{avatar}</a>
+          <Selector
+            label="Eyes"
+            values={eyes}
+            onSelectChanged={newEyes => this.props.selectEyes(newEyes)}
+          />
+          <Selector
+            label="Noses"
+            values={noses}
+            onSelectChanged={newNose => this.props.selectNose(newNose)}
+          />
+          <Selector
+            label="Mouths"
+            values={mouths}
+            onSelectChanged={newMouth => this.props.selectMouth(newMouth)}
+          />
+          <ColorPicker
+            label="Color"
+            color={face.color}
+            onColorSelected={newColor => this.props.selectColor(newColor)}
+          />
+          <a href={avatar}>{avatar}</a>
         </div>
         <Image src={avatar} />
       </div>
-    )
+    );
   }
 }
 
@@ -52,14 +78,12 @@ const mapStateToProps = state => ({
   noses: state.noses,
   mouths: state.mouths,
   face: state.face,
-})
+});
 
-export default connect(
-  mapStateToProps,
-  {
-    initFace,
-    selectEyes,
-    selectNose,
-    selectMouth,
-  },
-)(FaceEdit)
+export default connect(mapStateToProps, {
+  initFace,
+  selectEyes,
+  selectNose,
+  selectMouth,
+  selectColor,
+})(FaceEdit);

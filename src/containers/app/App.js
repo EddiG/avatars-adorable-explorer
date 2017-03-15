@@ -1,11 +1,12 @@
 // @flow
-import React from 'react'
-import './App.css'
-import FaceEdit from '../face/FaceEdit'
+import React from 'react';
+import './App.css';
+import FaceEdit from '../face/FaceEdit';
 
 const App = () => (
   <div className="App">
     <FaceEdit />
-  </div>)
+  </div>
+);
 
-export default App
+export default App;
