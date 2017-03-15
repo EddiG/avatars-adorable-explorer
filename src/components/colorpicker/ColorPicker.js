@@ -1,6 +1,6 @@
 // @flow
-
 import React from 'react';
+import './ColorPicker.css';
 
 type Props = {
   label: string,
@@ -9,7 +9,7 @@ type Props = {
 };
 
 const ColorPicker = ({ label, color, onColorSelected }: Props) => (
-  <div>
+  <div className="ColorPicker">
     {label}
     {' '}
     <input

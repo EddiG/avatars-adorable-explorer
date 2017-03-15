@@ -1,5 +1,4 @@
 // @flow
-
 export type Action =
   | { type: 'LOAD_FACE_ELEMENTS' }
   | { type: 'EYES_LOADED', eyes: Array<string> }
@@ -10,4 +9,5 @@ export type Action =
   | { type: 'MOUTH_SELECTED', mouth: string }
   | { type: 'INIT_FACE' }
   | { type: 'SET_FACE', eyes: string, nose: string, mouth: string }
-  | { type: 'SET_COLOR', color: string };
+  | { type: 'SET_COLOR', color: string }
+  | { type: 'INIT_ROUTER', match: Object, location: Object };

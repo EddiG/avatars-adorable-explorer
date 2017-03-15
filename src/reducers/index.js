@@ -5,6 +5,7 @@ import noses from './noses';
 import mouths from './mouths';
 import face from './face';
 import color from './color';
+import router from './router';
 
 export default combineReducers({
   eyes,
@@ -12,4 +13,5 @@ export default combineReducers({
   mouths,
   face,
   color,
+  router,
 });

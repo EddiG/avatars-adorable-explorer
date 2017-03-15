@@ -1,6 +1,12 @@
 .Avatar {
-  width: 250px;
-  height: 250px;
-  background-color: #dadada;
-  border-radius: 20%;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 10px;
+    background-color: #dadada;
+    border-radius: 20%;
+  }
 }

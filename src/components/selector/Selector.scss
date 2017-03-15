@@ -1,0 +1,13 @@
+.Selector {
+  display: flex;
+  justify-content: space-between;
+  width: 180px;
+  margin: 10px;
+
+  select {
+    height: 25px;
+    width: 100px;
+    font-size: 14px;
+    padding-left: 10px;
+  }
+}

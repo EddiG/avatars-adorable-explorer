@@ -1,12 +1,34 @@
 // @flow
-import React from 'react';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import FaceEdit from '../face/FaceEdit';
+import { initRouter } from '../../actions';
 
-const App = () => (
-  <div className="App">
-    <FaceEdit />
-  </div>
-);
+type Props = {
+  match: Object,
+  location: Object,
+  initRouter: Function,
+};
 
-export default App;
+class App extends PureComponent {
+  componentWillMount() {
+    const match = this.props.match;
+    const location = this.props.location;
+    this.props.initRouter(match, location);
+  }
+
+  props: Props;
+
+  render() {
+    return (
+      <div className="App">
+        <FaceEdit />
+      </div>
+    );
+  }
+}
+
+export default connect(() => ({}), {
+  initRouter,
+})(App);

@@ -44,20 +44,24 @@ class FaceEdit extends PureComponent {
 
     return (
       <div className="FaceEdit">
+        <Image src={avatar} />
         <div>
           <Selector
             label="Eyes"
             values={eyes}
+            selectedValue={face.eyes}
             onSelectChanged={newEyes => this.props.selectEyes(newEyes)}
           />
           <Selector
             label="Noses"
             values={noses}
+            selectedValue={face.nose}
             onSelectChanged={newNose => this.props.selectNose(newNose)}
           />
           <Selector
             label="Mouths"
             values={mouths}
+            selectedValue={face.mouth}
             onSelectChanged={newMouth => this.props.selectMouth(newMouth)}
           />
           <ColorPicker
@@ -65,9 +69,7 @@ class FaceEdit extends PureComponent {
             color={face.color}
             onColorSelected={newColor => this.props.selectColor(newColor)}
           />
-          <a href={avatar}>{avatar}</a>
         </div>
-        <Image src={avatar} />
       </div>
     );
   }

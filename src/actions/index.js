@@ -50,3 +50,9 @@ export const selectColor = (color: string): Action => ({
   type: 'SET_COLOR',
   color,
 });
+
+export const initRouter = (match: Object, location: Object): Action => ({
+  type: 'INIT_ROUTER',
+  match,
+  location,
+});

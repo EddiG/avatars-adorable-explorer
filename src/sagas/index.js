@@ -3,11 +3,12 @@
 // import fetchElements from '../services/faceElements'
 // import { eyesLoaded, nosesLoaded, mouthsLoaded, setFace } from '../actions'
 import { put, select, takeLatest } from 'redux-saga/effects';
-import { setFace } from '../actions';
+import { setFace, selectColor } from '../actions';
 import {
   getFirstEyes,
   getFirstNose,
   getFirstMouth,
+  getFaceFromRouter,
 } from '../reducers/selectors';
 
 // function* loadFaceElements() {
@@ -19,10 +20,16 @@ import {
 // }
 
 function* initFace() {
-  const eyes = yield select(getFirstEyes);
-  const nose = yield select(getFirstNose);
-  const mouth = yield select(getFirstMouth);
-  yield put(setFace(eyes, nose, mouth));
+  const face = yield select(getFaceFromRouter);
+  if (face.eyes && face.nose && face.mouth && face.color) {
+    yield put(setFace(face.eyes, face.nose, face.mouth));
+    yield put(selectColor(face.color));
+  } else {
+    const eyes = yield select(getFirstEyes);
+    const nose = yield select(getFirstNose);
+    const mouth = yield select(getFirstMouth);
+    yield put(setFace(eyes, nose, mouth));
+  }
 }
 
 function* root(): any {
